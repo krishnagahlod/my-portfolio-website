@@ -201,6 +201,14 @@ export default function Experience() {
     else window.scrollTo({ top: y });
   };
 
+  // On phones the cards are a list that opens one at a time, so five roles do not take six screens.
+  const [open, setOpen] = useState(0);
+  const toggle = (i: number, card: Element | null) => {
+    setOpen((o) => (o === i ? -1 : i));
+    // The card that closes above would carry this one off screen, so the page follows it.
+    if (card instanceof HTMLElement && window.matchMedia("(max-width: 1023px)").matches) requestAnimationFrame(() => requestAnimationFrame(() => lenis?.scrollTo(card, { offset: -64 })));
+  };
+
   return (
     <section id="experience" className="wrap pt-[clamp(5rem,11vw,10rem)]">
       <h2 className="t-mega">
@@ -234,13 +242,25 @@ export default function Experience() {
                 <div className="grid grow items-center gap-x-12 gap-y-8 lg:grid-cols-12">
                   <div className="lg:col-span-5">
                     <p className="accent t-small">{job.when}</p>
-                    <h3 className="t-huge mt-3">{job.company}</h3>
+                    <h3 className="t-huge mt-3">
+                      <button
+                        type="button"
+                        aria-expanded={open === i}
+                        onClick={(e) => toggle(i, e.currentTarget.closest("article"))}
+                        className="flex w-full items-center justify-between gap-4 text-left lg:pointer-events-none"
+                      >
+                        {job.company}
+                        <span aria-hidden className="accent t-big transition-transform duration-500 lg:hidden" style={{ rotate: open === i ? "45deg" : "0deg" }}>
+                          +
+                        </span>
+                      </button>
+                    </h3>
                     <p className="t-lead mt-4 max-w-[30ch] font-medium">{job.role}</p>
-                    <p className="t-body mt-3 max-w-[40ch] opacity-70">{job.summary}</p>
+                    <p className={"t-body mt-3 max-w-[40ch] opacity-70 " + (open === i ? "reveal" : "max-lg:hidden")}>{job.summary}</p>
                   </div>
-                  <InView className="accent lg:col-span-7">{figures[job.company]}</InView>
+                  <InView className={"accent lg:col-span-7 " + (open === i ? "reveal" : "max-lg:hidden")}>{figures[job.company]}</InView>
                 </div>
-                <ul className="rule t-body grid gap-x-10 gap-y-2 pt-4 sm:grid-cols-2">
+                <ul className={"rule t-body grid gap-x-10 gap-y-2 pt-4 sm:grid-cols-2 " + (open === i ? "reveal" : "max-lg:hidden")}>
                   {job.points.map((point) => (
                     <li key={point}>{point}</li>
                   ))}

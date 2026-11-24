@@ -120,9 +120,11 @@ export default function Wheel() {
       {/* Phones and reduced motion: the same work as a plain list */}
       <div className="wheel-list wrap bg-black py-20 text-paper">
         <h2 className="t-small">Selected work</h2>
-        <ul className="mt-8 grid gap-x-8 gap-y-14 md:grid-cols-2">
+        <p className="t-small mt-2 text-dim">Swipe sideways to see all {n}.</p>
+        {/* One row that snaps from project to project, so five projects take one screen */}
+        <ul className="-mx-[var(--pad)] mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--pad)] pb-4 [scroll-padding-inline:var(--pad)] [scrollbar-width:none]">
           {wheel.map((p) => (
-            <li key={p.slug}>
+            <li key={p.slug} className="w-[82vw] max-w-[30rem] shrink-0 snap-start">
               <PageLink href={`/work/${p.slug}`} colour={p.deep} className="block">
                 <div className="relative aspect-[16/11] overflow-hidden" style={{ background: p.deep }}>
                   <Cover project={p} sizes="100vw" play={false} />

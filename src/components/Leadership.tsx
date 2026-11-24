@@ -27,6 +27,7 @@ export default function Leadership() {
               <Lines lines={["Positions of", "responsibility"]} />
             </h2>
             <p className="t-lead mt-6 max-w-[30ch] text-dim">Teams, networks and programmes I have run on campus alongside the product work.</p>
+            <p className="t-small mt-6 lg:hidden">Swipe sideways for each role.</p>
           </div>
 
           {leadership.map((role) => (

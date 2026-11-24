@@ -45,20 +45,20 @@ export default function Home() {
           </div>
 
           {/* A quilt of tiles: the group sets the colour, and each tile turns over under the pointer */}
-          <ul className="wrap mt-[clamp(2.5rem,6vw,5rem)] grid sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="wrap mt-[clamp(2.5rem,6vw,5rem)] grid grid-cols-2 lg:grid-cols-4">
             {highlights.map((h) => (
               <li
                 key={h.text}
-                className="tone tile flex flex-col justify-between gap-6 p-[clamp(1.25rem,1.8vw,1.75rem)] sm:min-h-[22rem] sm:gap-10"
+                className="tone tile flex flex-col justify-between gap-5 p-[clamp(0.85rem,1.8vw,1.75rem)] sm:min-h-[22rem] sm:gap-10"
                 style={{ "--deep": groups[h.group].deep, "--bright": groups[h.group].bright } as CSSProperties}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <Glyph name={h.glyph} className="w-14 sm:w-20" />
+                  <Glyph name={h.glyph} className="w-10 sm:w-20" />
                   <p className="t-small font-medium">{h.group}</p>
                 </div>
                 <div>
-                  <p className="text-[clamp(2.25rem,3.6vw,3.75rem)] font-medium leading-none tracking-[-0.04em] tabular-nums">{h.n}</p>
-                  <p className="t-body mt-3">{h.text}</p>
+                  <p className="text-[clamp(1.6rem,3.6vw,3.75rem)] font-medium leading-none tracking-[-0.04em] tabular-nums">{h.n}</p>
+                  <p className="mt-2 text-[0.8125rem] leading-snug sm:mt-3 sm:text-[1.0625rem] sm:leading-[1.6]">{h.text}</p>
                 </div>
               </li>
             ))}

@@ -15,11 +15,11 @@ export default function Tour({ src, poster, alt, sizes, play = true, priority }:
   const reduce = useReducedMotion();
   const [started, setStarted] = useState(false);
 
-  // Phones and data-saver connections keep the still: each video is 1 to 2 MB.
+  // Data-saver connections keep the still: each video is 1 to 2 MB. Everyone else gets the video, but only while it is on screen.
   const [allowed, setAllowed] = useState(false);
   useEffect(() => {
     const saver = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-    setAllowed(window.matchMedia("(min-width: 768px)").matches && !saver);
+    setAllowed(!saver);
   }, []);
   const on = play && inView && allowed && !reduce;
 
