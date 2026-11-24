@@ -33,7 +33,7 @@ export default function Contact() {
       <div className="t-small flex flex-wrap justify-between gap-x-8 gap-y-2">
         <p className="flex items-center gap-3">
           <span aria-hidden className="live-dot" />
-          {person.seeking}
+          {person.seeking}. {person.ideal}.
         </p>
         <p className="text-dim">
           <MumbaiTime />

@@ -13,6 +13,8 @@ export default function Nav() {
   const [bar, setBar] = useState({ away: false, solid: false });
   useEffect(() => {
     let last = window.scrollY;
+    // A reload or the Back button can open the page part of the way down, before any scroll event arrives.
+    if (last > 120) setBar({ away: false, solid: true });
     const onScroll = () => {
       const y = window.scrollY;
       if (Math.abs(y - last) < 6) return;

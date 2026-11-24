@@ -7,7 +7,8 @@ export const person = {
   github: "https://github.com/krishnagahlod",
   // The one-click résumé in the menu and the hero. The versions by role sit in the hiring section.
   resume: "/Krishna-Gahlod-Resume.pdf",
-  seeking: "Open to new roles, ideally AI product manager or forward deployed engineer",
+  seeking: "Open to internships now and full-time roles from 2027",
+  ideal: "Ideally AI product manager or forward deployed engineer",
   intro:
     "I work where product and engineering meet: I decide what to build, then build and ship it. So far: five live apps at Golash, a mindset training product with 200+ users, and conversational AI agents at Accenture.",
 };
@@ -478,9 +479,9 @@ export const experience = [
     when: "Nov 2025 to Jan 2026",
     deep: "#5C2500",
     bright: "#FFB27D",
-    summary: "Researched, designed and helped build the app and website for learners preparing for UPSC, JEE and NEET.",
+    summary: "Researched and designed the app and website for learners preparing for UPSC, JEE and NEET, and built the first version of both.",
     points: [
-      "Built the mobile app in Flutter and the website in React for 5,000+ active learners",
+      "Built the first version of the mobile app in Flutter and the website in React. The team has refined both since, and 5,000+ learners use them today",
       "Designed 12-screen flows and AI features that made navigation 20% more efficient",
     ],
   },

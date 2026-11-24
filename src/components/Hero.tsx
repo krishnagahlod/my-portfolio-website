@@ -118,8 +118,12 @@ export default function Hero() {
             {person.seeking}
           </a>
         </p>
-        <p>Founder of Golash, CTO at Tarashio</p>
-        <p>Chemical Engineering, IIT Bombay, class of 2027</p>
+        <p>{person.ideal}</p>
+        <p>
+          Founder of Golash, CTO at Tarashio
+          <br />
+          Chemical Engineering, IIT Bombay, class of 2027
+        </p>
         <p className="md:text-right">
           <a href="#golash" className="link">
             Scroll to the work
