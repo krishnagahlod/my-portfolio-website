@@ -9,8 +9,6 @@ export const person = {
   resume: "/Krishna-Gahlod-Resume.pdf",
   seeking: "Open to internships now and full-time roles from 2027",
   ideal: "Ideally AI product manager or forward deployed engineer",
-  about:
-    "I love creating products, and I learn by exploring a thing until I understand how it works. The same habit runs through the rest of my life: I train, I compete, and I keep looking for things I have not tried yet. Each one is a way to keep improving.",
   intro:
     "I work where product and engineering meet: I decide what to build, then build and ship it. So far: five live apps at Golash, a mindset training product with 200+ users, and conversational AI agents at Accenture.",
 };
