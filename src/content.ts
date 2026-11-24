@@ -5,9 +5,13 @@ export const person = {
   email: "krishnagahlod@gmail.com",
   linkedin: "https://www.linkedin.com/in/krishna-gahlod-65143927b/",
   github: "https://github.com/krishnagahlod",
-  resume: "/Krishna-Gahlod-Resume.pdf",
+  seeking: "Open to AI product manager and forward deployed engineer roles",
+  resumes: [
+    { name: "Product résumé", file: "/Krishna-Gahlod-Resume.pdf" },
+    { name: "Engineering résumé", file: "/Krishna-Gahlod-Resume-Tech.pdf" },
+  ],
   intro:
-    "I spend most of my time building software: five live apps for student life, a mindset training product with 200+ users, and conversational AI agents at Accenture.",
+    "I work where product and engineering meet: I decide what to build, then build and ship it. So far: five live apps at Golash, a mindset training product with 200+ users, and conversational AI agents at Accenture.",
 };
 
 export type GolashApp = {
@@ -540,3 +544,27 @@ export const education = {
   degree: "B.Tech in Chemical Engineering, 2023 to 2027",
   minor: "Minor in Entrepreneurship, Desai Sethi School of Entrepreneurship",
 };
+
+// The two roles I am looking for, each with its strongest evidence and the résumé written for it.
+export const roles = [
+  {
+    title: "AI product manager",
+    fit: "I find the problem, decide what to build and measure whether it worked. I have done that as a founder and as a CTO.",
+    proof: [
+      { n: "5 apps", text: "Founded Golash and took five apps for Indian college students from idea to launch" },
+      { n: "1 to 3", text: "Defined the EdMe roadmap that grows coverage from one exam category to three" },
+      { n: "31% to 63%", text: "Raised the clean-pass rate of a 10-agent assistant across 16 evaluation scenarios at Accenture" },
+    ],
+    resume: { name: "product résumé", file: "/Krishna-Gahlod-Resume.pdf" },
+  },
+  {
+    title: "Forward deployed engineer",
+    fit: "I build AI systems around a real user's problem, and I run what I build.",
+    proof: [
+      { n: "10 agents", text: "Built a telecom assistant on Google's CX Agent Studio at Accenture, with 0.4 second handoffs" },
+      { n: "12 stages", text: "Built the research pipeline at Gnaan U that finds and screens teaching methods through 4 gates" },
+      { n: "13,000+", text: "Students connected to support portals through the platform I built as Institute System Administrator" },
+    ],
+    resume: { name: "engineering résumé", file: "/Krishna-Gahlod-Resume-Tech.pdf" },
+  },
+];

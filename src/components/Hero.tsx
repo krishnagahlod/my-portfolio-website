@@ -103,11 +103,14 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: OUT, delay: delay + 0.55 }}
       >
+        <p className="flex items-start gap-2.5">
+          <span aria-hidden className="live-dot mt-[0.45em] shrink-0" />
+          <a href="#roles" className="link">
+            {person.seeking}
+          </a>
+        </p>
         <p>Founder of Golash, CTO at Tarashio</p>
         <p>Chemical Engineering, IIT Bombay, class of 2027</p>
-        <p>
-          <MumbaiTime />
-        </p>
         <p className="md:text-right">
           <a href="#golash" className="link">
             Scroll to the work

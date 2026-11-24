@@ -5,11 +5,11 @@ import { person } from "@/content";
 import { MumbaiTime } from "./Hero";
 import { Lines } from "./motion";
 
-const links = [
+const links: { label: string; text: string; href: string; external?: boolean; download?: boolean }[] = [
   { label: "Email", text: "Write me a message", href: `mailto:${person.email}` },
   { label: "LinkedIn", text: "Connect with me", href: person.linkedin, external: true },
   { label: "GitHub", text: "Read the code", href: person.github, external: true },
-  { label: "Résumé", text: "Download the PDF", href: person.resume, download: true },
+  ...person.resumes.map((r) => ({ label: r.name, text: "Download the PDF", href: r.file, download: true })),
 ];
 
 /**
@@ -33,7 +33,7 @@ export default function Contact() {
       <div className="t-small flex flex-wrap justify-between gap-x-8 gap-y-2">
         <p className="flex items-center gap-3">
           <span aria-hidden className="live-dot" />
-          Open to new roles and collaborations
+          {person.seeking}
         </p>
         <p className="text-dim">
           <MumbaiTime />

@@ -5,6 +5,7 @@ import Glyph from "@/components/Glyph";
 import Golash from "@/components/Golash";
 import Hero from "@/components/Hero";
 import Leadership from "@/components/Leadership";
+import Roles from "@/components/Roles";
 import Wheel from "@/components/Wheel";
 import { Lines } from "@/components/motion";
 import { education, groups, highlights, toolkit } from "@/content";
@@ -68,6 +69,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Roles />
       </div>
 
       {/* The contact section is pinned under the page, so links jump to this marker at the end of the content */}

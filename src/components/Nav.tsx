@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { person } from "@/content";
 
 // White text with difference blending stays readable over every section colour.
 export default function Nav() {
@@ -18,9 +17,9 @@ export default function Nav() {
         <Link href="/#contact" className="link py-2">
           Contact
         </Link>
-        <a href={person.resume} download className="link py-2">
+        <Link href="/#roles" className="link py-2">
           Résumé
-        </a>
+        </Link>
       </nav>
     </header>
   );

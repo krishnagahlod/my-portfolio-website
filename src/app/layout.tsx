@@ -10,13 +10,15 @@ import Nav from "@/components/Nav";
 const host = Host_Grotesk({ variable: "--font-host", subsets: ["latin"] });
 
 const description =
-  "Krishna Gahlod builds AI products and ships them. Founder of Golash, CTO at Tarashio, Chemical Engineering at IIT Bombay, previously at Accenture and Hinduja Group.";
+  "Krishna Gahlod builds AI products and ships them. Founder of Golash, CTO at Tarashio, Chemical Engineering at IIT Bombay. Open to AI product manager and forward deployed engineer roles.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://krishna-gahlod.golash.in"),
   title: { default: "Krishna Gahlod, AI product builder", template: "%s | Krishna Gahlod" },
   description,
-  openGraph: { title: "Krishna Gahlod, AI product builder", description, type: "website" },
+  openGraph: { title: "Krishna Gahlod, AI product builder", description, type: "website", siteName: "Krishna Gahlod" },
+  // The preview picture itself comes from opengraph-image.jpg and twitter-image.jpg beside this file.
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
