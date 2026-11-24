@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
 import { useRef, useState } from "react";
 import { wheel, type Project } from "@/content";
 import Cover from "./Cover";
+import { PageLink } from "./Curtain";
 import { useLive } from "./Live";
 import { CursorBadge, useCursorBadge } from "./Marks";
 
@@ -64,7 +64,7 @@ export default function Wheel() {
               ))}
             </motion.div>
             {/* One link covers the drum, so a click anywhere opens the title in front */}
-            <Link href={`/work/${current.slug}`} className="absolute inset-0 z-10" aria-label={`${current.name}: open the case study`} />
+            <PageLink href={`/work/${current.slug}`} colour={current.deep} className="absolute inset-0 z-10" aria-label={`${current.name}: open the case study`} />
             <CursorBadge x={badge.x} y={badge.y} on={badge.on}>
               Open case study
             </CursorBadge>
@@ -79,7 +79,7 @@ export default function Wheel() {
                   data-state={i === active ? "active" : i < active ? "past" : "next"}
                   style={{ zIndex: i === active ? 2 : 1 }}
                 >
-                  <Cover project={p} sizes="40vw" />
+                  <Cover project={p} sizes="40vw" play={i === active} />
                 </div>
               ))}
               {current.live && (
@@ -104,9 +104,9 @@ export default function Wheel() {
                 </p>
               </div>
               <p className="t-small text-right">
-                <Link href={`/work/${current.slug}`} className="link">
+                <PageLink href={`/work/${current.slug}`} colour={current.deep} className="link">
                   Open the case study
-                </Link>
+                </PageLink>
               </p>
             </div>
           </div>
@@ -123,15 +123,15 @@ export default function Wheel() {
         <ul className="mt-8 grid gap-x-8 gap-y-14 md:grid-cols-2">
           {wheel.map((p) => (
             <li key={p.slug}>
-              <Link href={`/work/${p.slug}`} className="block">
+              <PageLink href={`/work/${p.slug}`} colour={p.deep} className="block">
                 <div className="relative aspect-[16/11] overflow-hidden" style={{ background: p.deep }}>
-                  <Cover project={p} sizes="100vw" />
+                  <Cover project={p} sizes="100vw" play={false} />
                 </div>
                 <h3 className="t-huge mt-5">{p.name}</h3>
                 <p className="t-small mt-2 text-dim">
                   {p.kind}, {p.when}
                 </p>
-              </Link>
+              </PageLink>
             </li>
           ))}
         </ul>

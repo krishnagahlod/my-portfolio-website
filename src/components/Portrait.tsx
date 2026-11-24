@@ -30,6 +30,7 @@ export default function Portrait({ peekAfter }: { peekAfter: number }) {
       if (!img.complete || !img.naturalWidth) return;
       const w = el.clientWidth;
       const h = el.clientHeight;
+      if (!w || !h) return; // the element is leaving the page
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       c.width = w * dpr;
       c.height = h * dpr;

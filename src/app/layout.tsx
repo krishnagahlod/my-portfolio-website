@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Host_Grotesk } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+import { CurtainProvider } from "@/components/Curtain";
 import { LiveProvider } from "@/components/Live";
 import { SmoothScroll } from "@/components/motion";
 import Nav from "@/components/Nav";
@@ -26,10 +27,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <SmoothScroll>
-          <LiveProvider>
-            <Nav />
-            <main id="main">{children}</main>
-          </LiveProvider>
+          <CurtainProvider>
+            <LiveProvider>
+              <Nav />
+              <main id="main">{children}</main>
+            </LiveProvider>
+          </CurtainProvider>
         </SmoothScroll>
       </body>
     </html>

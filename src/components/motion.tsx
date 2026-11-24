@@ -1,17 +1,43 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, useLenis } from "lenis/react";
 import { MotionConfig, motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
-import { useRef, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 
 export const IN_OUT = [0.76, 0, 0.24, 1] as const;
 export const OUT = [0.22, 1, 0.36, 1] as const;
+
+/**
+ * A click on a link, or the back button, cancels any glide in progress.
+ * Without this the smooth scroller keeps heading for its old target and drags the next page down with it.
+ */
+function GlideGuard() {
+  const lenis = useLenis();
+  useEffect(() => {
+    if (!lenis) return;
+    const settle = () => {
+      lenis.stop();
+      lenis.start();
+    };
+    const onClick = (e: Event) => {
+      if (e.target instanceof Element && e.target.closest("a[href]")) settle();
+    };
+    document.addEventListener("click", onClick, true);
+    window.addEventListener("popstate", settle);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      window.removeEventListener("popstate", settle);
+    };
+  }, [lenis]);
+  return null;
+}
 
 export function SmoothScroll({ children }: { children: ReactNode }) {
   const reduce = useReducedMotion();
   return (
     <MotionConfig reducedMotion="user">
       {!reduce && <ReactLenis root options={{ lerp: 0.09, anchors: true }} />}
+      {!reduce && <GlideGuard />}
       {children}
     </MotionConfig>
   );

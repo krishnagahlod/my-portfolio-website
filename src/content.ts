@@ -16,7 +16,7 @@ export type GolashApp = {
   tagline: string;
   what: string;
   url: string;
-  embed?: boolean; // true once the app allows this site to show it in a frame
+  tour?: string; // a looping scroll-through video of the live site
   shot: string;
   caseStudy?: string;
   stats?: { value: string; label: string }[];
@@ -30,6 +30,7 @@ export const golashApps: GolashApp[] = [
     what: "An AI interviewer that pushes back, plus a resume audit against the role you want.",
     url: "https://internprep-ai.golash.in",
     shot: "/img/app-internprep.webp",
+    tour: "/tour/internprep.mp4",
     caseStudy: "internprep-ai",
     stats: [
       { value: "100+", label: "active users" },
@@ -43,6 +44,7 @@ export const golashApps: GolashApp[] = [
     what: "Internships, jobs, hackathons and fellowships in one feed, each scored against your resume.",
     url: "https://opportunity-os.golash.in",
     shot: "/img/app-opportunities.webp",
+    tour: "/tour/opportunities.mp4",
     caseStudy: "opportunity-os",
     stats: [
       { value: "50+", label: "career networks" },
@@ -56,6 +58,7 @@ export const golashApps: GolashApp[] = [
     what: "A coach for case competitions that guides a team from the brief to the deck without writing the answer for them.",
     url: "https://finalist.golash.in",
     shot: "/img/app-finalist.webp",
+    tour: "/tour/finalist.mp4",
   },
   {
     name: "OnTrack",
@@ -64,6 +67,7 @@ export const golashApps: GolashApp[] = [
     what: "Deadlines, reminders, timetable and attendance on your phone, with a shared setup for class reps.",
     url: "https://ontrack.golash.in",
     shot: "/img/app-ontrack.webp",
+    tour: "/tour/ontrack.mp4",
   },
   {
     name: "Attempt",
@@ -72,6 +76,7 @@ export const golashApps: GolashApp[] = [
     what: "Upload a past paper and sit it as a timed computer-based test. The PDF and your score stay on your device.",
     url: "https://attempt.golash.in",
     shot: "/img/app-attempt.webp",
+    tour: "/tour/attempt.mp4",
   },
 ];
 
@@ -91,6 +96,7 @@ export type Project = {
   live?: LiveSite[];
   stack: string[];
   cover?: string;
+  tour?: string; // a looping scroll-through video of the live site, played over the cover
   example?: { prompt: string; rules: string[] }; // typographic cover when there is no screenshot
   numbers: { value: string; label: string }[];
   problem: string;
@@ -112,7 +118,8 @@ export const projects: Project[] = [
       "Free tools and five apps for Indian college students, built by a student. I design, build and run all of it.",
     live: [{ label: "golash.in", url: "https://golash.in" }],
     stack: ["Next.js 16", "React 19", "TypeScript", "Cloudflare Workers", "Supabase", "Neon Postgres", "Vercel"],
-    cover: "/img/golash-toolkit.webp",
+    cover: "/img/golash-home.webp",
+    tour: "/tour/golash.mp4",
     numbers: [
       { value: "5", label: "apps live on their own subdomains" },
       { value: "7", label: "free tools that run in the browser" },
@@ -132,6 +139,7 @@ export const projects: Project[] = [
       { title: "One brand system", text: "Each app has its own colour inside a shared identity, so five products read as one family." },
     ],
     gallery: [
+      { src: "/img/golash-toolkit.webp", caption: "The free tools on golash.in" },
       { src: "/img/app-internprep.webp", caption: "InternPrep AI" },
       { src: "/img/app-opportunities.webp", caption: "Opportunity OS" },
       { src: "/img/app-finalist.webp", caption: "Finalist" },
@@ -152,6 +160,7 @@ export const projects: Project[] = [
     live: [{ label: "internprep-ai.golash.in", url: "https://internprep-ai.golash.in" }],
     stack: ["Next.js 16", "FastAPI", "Supabase", "pgvector", "Gemini", "Groq", "Render", "Vercel", "PostHog", "Sentry"],
     cover: "/img/app-internprep.webp",
+    tour: "/tour/internprep.mp4",
     numbers: [
       { value: "100+", label: "active users" },
       { value: "270+", label: "cases with answer keys" },
@@ -190,6 +199,7 @@ export const projects: Project[] = [
     live: [{ label: "opportunity-os.golash.in", url: "https://opportunity-os.golash.in" }],
     stack: ["Next.js 16", "Supabase", "n8n", "Docker", "Gemini", "Llama 3.3", "Zod", "Resend", "Telegram API", "GitHub Actions"],
     cover: "/img/app-opportunities.webp",
+    tour: "/tour/opportunities.mp4",
     numbers: [
       { value: "50+", label: "career networks aggregated" },
       { value: "10,000+", label: "opportunities processed" },
@@ -228,6 +238,7 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Supabase", "PostHog", "Sentry", "Resend", "Vercel"],
     cover: "/img/tarashio-home.webp",
+    tour: "/tour/tarashio.mp4",
     numbers: [
       { value: "200+", label: "users on the app, and growing" },
       { value: "46", label: "automated tests that check the build against the product spec" },
@@ -336,6 +347,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "Flask", "RAG", "MiniLM embeddings", "Llama 3.3", "Gemini", "Streamlit", "Supabase"],
     cover: "/img/suscell-live.webp",
+    tour: "/tour/suscell.mp4",
     numbers: [
       { value: "800+", label: "students reached" },
       { value: "100+", label: "parameters in the calculator" },

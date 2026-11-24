@@ -1,19 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { AnimatePresence, motion, useSpring } from "motion/react";
-import { useRef, useState, type PointerEvent } from "react";
-import { golashApps } from "@/content";
-import { useLive } from "./Live";
+import { useState, type PointerEvent } from "react";
+import { golashApps, projects } from "@/content";
+import { PageLink } from "./Curtain";
 import { CursorBadge, useCursorBadge } from "./Marks";
+import Tour from "./Tour";
 import { IN_OUT, Lines } from "./motion";
+
+const deepOf = (slug: string) => projects.find((p) => p.slug === slug)?.deep;
 
 export default function Golash() {
   const [active, setActive] = useState(0);
   const app = golashApps[active];
 
-  // The screenshot leans toward the pointer, and a click opens the app itself.
+  // The panel leans toward the pointer while it plays the chosen app, and a click opens the app itself.
   const tiltX = useSpring(0, { stiffness: 140, damping: 18 });
   const tiltY = useSpring(0, { stiffness: 140, damping: 18 });
   const badge = useCursorBadge();
@@ -29,15 +31,6 @@ export default function Golash() {
     badge.bind.onPointerLeave();
   };
 
-  // Every app is a tab in the live window. An app that cannot be framed yet opens in a new tab instead.
-  const open = useLive();
-  const panel = useRef<HTMLButtonElement>(null);
-  const explore = () =>
-    open(
-      { title: "Golash", sites: golashApps.map((a) => ({ label: a.name, url: a.url, embed: a.embed, poster: a.shot })), index: active, ground: "#000" },
-      panel.current,
-    );
-
   return (
     <section id="golash" className="wrap bg-black py-[clamp(5rem,11vw,10rem)] text-paper">
       <div className="grid gap-x-8 gap-y-8 md:grid-cols-12">
@@ -47,9 +40,9 @@ export default function Golash() {
         <div className="md:col-span-5 md:pt-4">
           <p className="t-big">The company I am building: five apps and seven free tools for Indian college students. I design, build and run all of it.</p>
           <p className="t-small mt-6 flex flex-wrap gap-x-7 gap-y-2">
-            <Link href="/work/golash" className="link">
+            <PageLink href="/work/golash" colour={deepOf("golash")} className="link">
               Read how Golash is built
-            </Link>
+            </PageLink>
             <a href="https://golash.in" target="_blank" rel="noopener noreferrer" className="link">
               Visit golash.in
             </a>
@@ -101,19 +94,13 @@ export default function Golash() {
             )}
             <p className="t-small mt-6 flex flex-wrap gap-x-7 gap-y-2">
               {app.caseStudy && (
-                <Link href={`/work/${app.caseStudy}`} className="link">
+                <PageLink href={`/work/${app.caseStudy}`} colour={deepOf(app.caseStudy)} className="link">
                   Read the case study
-                </Link>
+                </PageLink>
               )}
-              {app.embed ? (
-                <button type="button" onClick={explore} className="link">
-                  Explore {app.name} live
-                </button>
-              ) : (
-                <a href={app.url} target="_blank" rel="noopener noreferrer" className="link">
-                  Open {app.name}
-                </a>
-              )}
+              <a href={app.url} target="_blank" rel="noopener noreferrer" className="link">
+                Open {app.name}
+              </a>
             </p>
           </div>
         </div>
@@ -125,11 +112,11 @@ export default function Golash() {
           onPointerEnter={badge.bind.onPointerEnter}
           onPointerLeave={leave}
         >
-          <motion.button
-            ref={panel}
-            type="button"
-            onClick={explore}
-            aria-label={app.embed ? `Explore ${app.name} live` : `Open ${app.name} in a new tab`}
+          <motion.a
+            href={app.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${app.name} in a new tab`}
             className="relative block aspect-[16/10] w-full overflow-hidden"
             style={{ rotateX: tiltX, rotateY: tiltY }}
             animate={{ backgroundColor: app.color }}
@@ -145,12 +132,16 @@ export default function Golash() {
                 exit={{ opacity: 0.999 }}
                 transition={{ duration: 0.7, ease: IN_OUT }}
               >
-                <Image src={app.shot} alt={`${app.name} home page`} fill sizes="(max-width: 768px) 100vw, 56vw" className="object-cover object-top" />
+                {app.tour ? (
+                  <Tour src={app.tour} poster={app.shot} alt={`${app.name} home page`} sizes="(max-width: 768px) 100vw, 56vw" />
+                ) : (
+                  <Image src={app.shot} alt={`${app.name} home page`} fill sizes="(max-width: 768px) 100vw, 56vw" className="object-cover object-top" />
+                )}
               </motion.div>
             </AnimatePresence>
-          </motion.button>
+          </motion.a>
           <CursorBadge x={badge.x} y={badge.y} on={badge.on}>
-            {app.embed ? "Explore live" : "Open the app"}
+            Open the app
           </CursorBadge>
         </div>
       </div>

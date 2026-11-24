@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import Cover from "@/components/Cover";
+import { PageLink } from "@/components/Curtain";
 import { LiveTrigger } from "@/components/Live";
+import Strip from "@/components/Strip";
 import { Lines, Parallax } from "@/components/motion";
 import { golashApps, projects } from "@/content";
 
@@ -155,9 +156,9 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
                   <p className="t-body col-span-12 text-mute sm:col-span-5">{a.what}</p>
                   <p className="t-small col-span-12 sm:col-span-3 sm:text-right">
                     {a.caseStudy ? (
-                      <Link href={`/work/${a.caseStudy}`} className="link">
+                      <PageLink href={`/work/${a.caseStudy}`} colour={projects.find((p) => p.slug === a.caseStudy)?.deep} className="link">
                         Read the case study
-                      </Link>
+                      </PageLink>
                     ) : (
                       <a href={a.url} target="_blank" rel="noopener noreferrer" className="link">
                         Open {a.name}
@@ -172,27 +173,34 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
 
         {project.gallery && (
           <Row title="Screens">
-            <div className="grid gap-10">
-              {project.gallery.map((g) => (
-                <figure key={g.src}>
+            <Strip label={`${project.name} screens`}>
+              {project.gallery.map((g, i, all) => (
+                <figure key={g.src} className={`shrink-0 ${all.length > 1 ? "w-[86%]" : "w-full"}`}>
                   <div className="relative aspect-[16/10] overflow-hidden bg-white">
-                    <Image src={g.src} alt={g.caption} fill sizes="(max-width: 768px) 100vw, 64vw" className="object-cover object-top" />
+                    <Image src={g.src} alt={g.caption} fill sizes="(max-width: 768px) 100vw, 56vw" draggable={false} className="object-cover object-top" />
                   </div>
-                  <figcaption className="t-small mt-3 text-mute">{g.caption}</figcaption>
+                  <figcaption className="t-small mt-3 flex justify-between gap-4 text-mute">
+                    <span>{g.caption}</span>
+                    {all.length > 1 && (
+                      <span className="tabular-nums">
+                        {i + 1} of {all.length}
+                      </span>
+                    )}
+                  </figcaption>
                 </figure>
               ))}
-            </div>
+            </Strip>
           </Row>
         )}
       </div>
 
-      <Link href={`/work/${next.slug}`} className="wrap block bg-black py-[clamp(4rem,9vw,8rem)] text-paper">
+      <PageLink href={`/work/${next.slug}`} colour={next.deep} className="wrap block bg-black py-[clamp(4rem,9vw,8rem)] text-paper">
         <p className="t-small text-dim">Next project</p>
         <p className="t-mega mt-4">
           <Lines lines={[next.name]} />
         </p>
         <p className="t-lead mt-5 max-w-[44ch] text-dim">{next.summary}</p>
-      </Link>
+      </PageLink>
     </article>
   );
 }

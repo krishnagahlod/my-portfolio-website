@@ -1,10 +1,16 @@
 import Image from "next/image";
 import type { Project } from "@/content";
+import Tour from "./Tour";
 
-/** A project's screenshot, or a typographic stand-in when it has none. */
-export default function Cover({ project, sizes, priority }: { project: Project; sizes: string; priority?: boolean }) {
+/** A project's screenshot (a scroll-through video where one exists), or a typographic stand-in when it has none. */
+export default function Cover({ project, sizes, priority, play = true }: { project: Project; sizes: string; priority?: boolean; play?: boolean }) {
   if (project.cover) {
-    return <Image src={project.cover} alt={`${project.name} screenshot`} fill sizes={sizes} priority={priority} className="object-cover object-top" />;
+    const alt = `${project.name} screenshot`;
+    return project.tour ? (
+      <Tour src={project.tour} poster={project.cover} alt={alt} sizes={sizes} priority={priority} play={play} />
+    ) : (
+      <Image src={project.cover} alt={alt} fill sizes={sizes} priority={priority} className="object-cover object-top" />
+    );
   }
   const ex = project.example;
   if (!ex) return null;
