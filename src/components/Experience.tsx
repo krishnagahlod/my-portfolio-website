@@ -77,7 +77,7 @@ function AgentsFigure() {
   return (
     <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
       <div>
-        <Caption>Clean passes across 16 evaluation scenarios</Caption>
+        <Caption>Scenarios where every test case passed, out of 16</Caption>
         <div className="mt-5 grid gap-6">
           {[
             { label: "Before", on: 5, pct: "31%" },

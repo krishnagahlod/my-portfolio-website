@@ -9,6 +9,8 @@ export const person = {
   resume: "/Krishna-Gahlod-Resume.pdf",
   seeking: "Open to internships now and full-time roles from 2027",
   ideal: "Ideally AI product manager or forward deployed engineer",
+  about:
+    "I love creating products, and I learn by exploring a thing until I understand how it works. The same habit runs through the rest of my life: I train, I compete, and I keep looking for things I have not tried yet. Each one is a way to keep improving.",
   intro:
     "I work where product and engineering meet: I decide what to build, then build and ship it. So far: five live apps at Golash, a mindset training product with 200+ users, and conversational AI agents at Accenture.",
 };
@@ -99,6 +101,7 @@ export type Project = {
   live?: LiveSite[];
   stack: string[];
   cover?: string;
+  stage?: { label: string; text: string }; // where the product stands today, when that is not a full launch
   tour?: string; // a looping scroll-through video of the live site, played over the cover
   example?: { prompt: string; rules: string[] }; // typographic cover when there is no screenshot
   numbers: { value: string; label: string }[];
@@ -115,6 +118,10 @@ export const projects: Project[] = [
     kind: "Company and product family",
     when: "2026 to now",
     role: "Founder, solo",
+    stage: {
+      label: "Soft launch, in testing",
+      text: "Golash is in soft launch. The five apps are live and open to early users while they are being tested, and a full launch follows this phase. The apps came before the company: I started with Opportunity OS in early 2026, built InternPrep AI from July and then the other three, each on its own. Then I saw that they belonged together, and Golash became the parent company for all five.",
+    },
     deep: "#15107A",
     bright: "#A5A0FF",
     summary:
@@ -230,6 +237,7 @@ export const projects: Project[] = [
     kind: "Mindset training app",
     when: "Sep 2026 to now",
     role: "CTO",
+    stage: { label: "Soft launch, in testing", text: "Tarashio is in soft launch. 200+ people are using the app while our team of fewer than ten tests it ahead of a full launch." },
     deep: "#16205E",
     bright: "#FFC94A",
     summary:
@@ -454,7 +462,7 @@ export const experience = [
     deep: "#16205E",
     bright: "#FFC94A",
     summary:
-      "Leading technology at a mindset training startup. I built the app, the engine behind it and the launch site, and I run them in production.",
+      "Leading technology at a mindset training startup with a team of fewer than ten, now in soft launch. I built the app, the engine behind it and the launch site, and I run them in production.",
     points: [
       "Built the product from its first commit: training engine, app, admin console and launch site",
       "Added a guest trial that lets people start before they sign up",
@@ -482,7 +490,7 @@ export const experience = [
     summary: "Researched and designed the app and website for learners preparing for UPSC, JEE and NEET, and built the first version of both.",
     points: [
       "Built the first version of the mobile app in Flutter and the website in React. The team has refined both since, and 5,000+ learners use them today",
-      "Designed 12-screen flows and AI features that made navigation 20% more efficient",
+      "Designed 12-screen flows and AI features, forecast to make navigation 20% more efficient",
     ],
   },
 ];
@@ -523,7 +531,7 @@ export const leadership = [
     glyph: "sun" as const,
     number: "300+",
     numberLabel: "attendees at International Day of Yoga, run with the Ministry of Ayush",
-    text: "Co-led Yogastha, the Institute Sports Council's yoga club, which looks after physical and mental wellness on campus. We ran 15+ events and 10+ competitions and grew the club's outreach by 20%.",
+    text: "Co-led Yogastha, the Institute Sports Council's yoga club, which looks after physical and mental wellness on campus. We ran 15+ events and 10+ competitions and grew the club's outreach by 20%, measured by attendance at its events.",
     marks: { total: 20, on: 20, cols: 10, square: false, caption: "A 20-member team" },
   },
   {
@@ -552,7 +560,7 @@ export const highlights = [
   { n: "1 of 28", group: "Sport" as const, glyph: "chevrons" as const, text: "Athletes selected through institute-wide trials for the Inter-IIT athletics camp team, which trains for the sports meet between the IITs, in the 200 m sprint" },
   { n: "1 of 200+", group: "Campus" as const, glyph: "star" as const, text: "Residents named Hostel Sophomore of the Year, for 5+ inter-hostel General Championships and my work as Design Secretary" },
   { n: "1,000", group: "Community" as const, glyph: "leaf" as const, text: "Saplings planted across eco-drives, along with 200+ kg of beach waste removed" },
-  { n: "19%", group: "Markets" as const, glyph: "bars" as const, text: "Annualised return (XIRR) on a personal investment portfolio that I research, allocate and rebalance myself" },
+  { n: "19%", group: "Markets" as const, glyph: "bars" as const, text: "Annualised return (XIRR) over about two years on a personal investment portfolio that I research, allocate and rebalance myself" },
   { n: "18", group: "Markets" as const, glyph: "book" as const, text: "Students guided through a Summer of Science project on stock market analysis, with weekly resources and quizzes" },
   { n: "160+", group: "Community" as const, glyph: "atom" as const, text: "Girls from rural India engaged through WiSE, IIT Bombay's Women in Science and Engineering initiative, to encourage careers in STEM" },
   { n: "1,000+", group: "Campus" as const, glyph: "eye" as const, text: "Attendees at Vision, the Design Club's flagship event, where I led 2 projects" },
@@ -580,7 +588,7 @@ export const roles = [
     proof: [
       { n: "5 apps", text: "Founded Golash and took five apps for Indian college students from idea to launch" },
       { n: "200+", text: "Grew Tarashio to 200+ users, with a guest trial that lets people start before they sign up" },
-      { n: "31% to 63%", text: "Raised the clean-pass rate of a 10-agent assistant across 16 evaluation scenarios at Accenture" },
+      { n: "31% to 63%", text: "Raised the share of evaluation scenarios that a 10-agent assistant passed in full, across 16 scenarios at Accenture" },
     ],
     resume: { name: "product résumé", file: "/Krishna-Gahlod-Resume.pdf" },
   },

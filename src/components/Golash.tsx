@@ -38,7 +38,7 @@ export default function Golash() {
           <Lines lines={["golash"]} />
         </h2>
         <div className="md:col-span-5 md:pt-4">
-          <p className="t-big">The company I am building: five apps and seven free tools for Indian college students. I design, build and run all of it.</p>
+          <p className="t-big">The company I am building: five apps and seven free tools for Indian college students, now in soft launch. I design, build and run all of it.</p>
           <p className="t-small mt-6 flex flex-wrap gap-x-7 gap-y-2">
             <PageLink href="/work/golash" colour={deepOf("golash")} className="link">
               Read how Golash is built

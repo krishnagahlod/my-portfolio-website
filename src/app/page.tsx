@@ -44,6 +44,8 @@ export default function Home() {
             <p className="t-lead max-w-[30ch] text-mute">Sport, campus life, community work and markets. The colour tells you which.</p>
           </div>
 
+          <p className="wrap t-big mt-[clamp(2rem,5vw,4rem)] max-w-[46ch]">{person.about}</p>
+
           {/* A quilt of tiles: the group sets the colour, and each tile turns over under the pointer */}
           <ul className="wrap mt-[clamp(2.5rem,6vw,5rem)] grid sm:grid-cols-2 lg:grid-cols-4">
             {highlights.map((h) => (

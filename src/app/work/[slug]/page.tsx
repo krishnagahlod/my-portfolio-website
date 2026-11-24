@@ -75,6 +75,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           <div className="md:col-span-2">
             <dt style={{ color: project.bright }}>When</dt>
             <dd className="t-body mt-1">{project.when}</dd>
+            {project.stage && <dd className="t-body opacity-70">{project.stage.label}</dd>}
           </div>
           <div className="col-span-2 md:col-span-4">
             <dt style={{ color: project.bright }}>Built with</dt>
@@ -160,6 +161,12 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
             ))}
           </dl>
         </Row>
+
+        {project.stage && (
+          <Row title="Where it stands">
+            <p className="t-lead max-w-[62ch]">{project.stage.text}</p>
+          </Row>
+        )}
 
         {project.slug === "golash" && (
           <Row title="The five apps">
