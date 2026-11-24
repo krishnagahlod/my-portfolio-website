@@ -5,11 +5,11 @@ import { person } from "@/content";
 import { MumbaiTime } from "./Hero";
 import { Lines } from "./motion";
 
-const links: { label: string; text: string; href: string; external?: boolean; download?: boolean }[] = [
+const links: { label: string; text: string; href: string; external?: boolean }[] = [
   { label: "Email", text: "Write me a message", href: `mailto:${person.email}` },
   { label: "LinkedIn", text: "Connect with me", href: person.linkedin, external: true },
   { label: "GitHub", text: "Read the code", href: person.github, external: true },
-  ...person.resumes.map((r) => ({ label: r.name, text: "Download the PDF", href: r.file, download: true })),
+  { label: "Résumés", text: "Four versions, by role", href: "/#roles" },
 ];
 
 /**
@@ -64,7 +64,6 @@ export default function Contact() {
               <li key={l.label} className="rule">
                 <a
                   href={l.href}
-                  download={l.download}
                   {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="group -mx-3 flex items-baseline justify-between gap-6 px-3 py-3 transition-colors duration-300 hover:bg-paper hover:text-ink"
                 >

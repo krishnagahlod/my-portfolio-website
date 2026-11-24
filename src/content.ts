@@ -5,11 +5,7 @@ export const person = {
   email: "krishnagahlod@gmail.com",
   linkedin: "https://www.linkedin.com/in/krishna-gahlod-65143927b/",
   github: "https://github.com/krishnagahlod",
-  seeking: "Open to AI product manager and forward deployed engineer roles",
-  resumes: [
-    { name: "Product résumé", file: "/Krishna-Gahlod-Resume.pdf" },
-    { name: "Engineering résumé", file: "/Krishna-Gahlod-Resume-Tech.pdf" },
-  ],
+  seeking: "Open to new roles, ideally AI product manager or forward deployed engineer",
   intro:
     "I work where product and engineering meet: I decide what to build, then build and ship it. So far: five live apps at Golash, a mindset training product with 200+ users, and conversational AI agents at Accenture.",
 };
@@ -282,6 +278,7 @@ export const projects: Project[] = [
     bright: "#F4C955",
     summary:
       "Describe an investment strategy in plain English, get rules you can read, and backtest them on 10+ years of NIFTY data.",
+    live: [{ label: "stockscout-five.vercel.app (sign-in needed)", url: "https://stockscout-five.vercel.app" }],
     stack: ["Next.js", "FastAPI", "Supabase", "vectorbt", "pandas", "Cerebras", "Ollama", "APScheduler", "Railway"],
     example: {
       prompt: "Profitable mid-caps with low debt, and no more than a fifth of the portfolio in one sector.",
@@ -379,6 +376,45 @@ export const projects: Project[] = [
     ],
     gallery: [{ src: "/img/suscell-home.webp", caption: "The home page of the revamped site" }],
   },
+  {
+    slug: "hostel-affairs",
+    name: "Hostel Affairs",
+    kind: "Official council website for IIT Bombay's hostels",
+    when: "Jul to Oct 2026",
+    role: "Solo designer and developer, as Institute System Administrator",
+    deep: "#3D123F",
+    bright: "#EBAAF0",
+    summary:
+      "The official site of the Hostel Affairs Council, which looks after 21 residence halls and 13,000+ residents at IIT Bombay. It is built around what students come to do, and the next council can update it without touching code.",
+    live: [{ label: "Hostel Affairs site", url: "https://gymkhana.iitb.ac.in/~hostelaffairs/", embed: true }],
+    stack: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "cmdk", "JSON content files"],
+    cover: "/img/hostelaffairs-home.webp",
+    tour: "/tour/hostelaffairs.mp4",
+    numbers: [
+      { value: "21", label: "residence halls, each with its own page" },
+      { value: "26", label: "questions answered across 6 topics" },
+      { value: "14", label: "campus portals and resources in one searchable place" },
+      { value: "111", label: "commits, all mine, from July to October 2026" },
+    ],
+    problem:
+      "The previous site described the council, but it did not help a student get something done: find the right person, a hostel's details, a document or an answer. I also wanted the next council to be able to keep the new one current without a developer.",
+    built: [
+      "A fast static site built around tasks: a directory of all 21 hostels with a page for each, a searchable FAQ, the campus portals a resident needs, emergency contacts and the council team.",
+      "Every piece of content sits in a plain data file, so a future council edits a file instead of code. I also wrote the deployment and maintenance guide for the system administrators who come after me.",
+    ],
+    how: [
+      { title: "Content as data", text: "Hostels, questions, resources, the team, events and emergency contacts each live in one JSON file. Pages are generated from them, so a content change never needs a code change." },
+      { title: "Search from anywhere", text: "A command palette searches hostels, questions, portals and council members from any page." },
+      { title: "A page for every hostel", text: "Each of the 21 halls has its own page with its representatives, emergency contacts and facilities, and the directory filters by facility." },
+      { title: "No server to maintain", text: "The site is a static Next.js export served from the Gymkhana web server under its own sub-path, so there is nothing running to patch or restart." },
+      { title: "Built to be handed over", text: "A written deployment and maintenance guide lets the next administrator update the site safely." },
+    ],
+    gallery: [
+      { src: "/img/hostelaffairs-hostels.webp", caption: "The hostels directory, with filters by facility" },
+      { src: "/img/hostelaffairs-faq.webp", caption: "Questions grouped by topic, with search" },
+      { src: "/img/hostelaffairs-resources.webp", caption: "Campus portals and resources in one place" },
+    ],
+  },
 ];
 
 // Golash and its two apps are presented in the Golash section, so the work drum shows everything else.
@@ -470,6 +506,7 @@ export const leadership = [
     deep: "#0E2C6E",
     bright: "#9DC3FF",
     glyph: "servers" as const,
+    link: { label: "See the Hostel Affairs site I built", href: "/work/hostel-affairs" },
     number: "13,000+",
     numberLabel: "students connected to support portals through the Gymkhana platform I built",
     text: "The technical bridge between the Computer Centre and students. I run network operations for 10,000+ residents and manage hosting and deployment for 15+ student councils.",
@@ -567,4 +604,10 @@ export const roles = [
     ],
     resume: { name: "engineering résumé", file: "/Krishna-Gahlod-Resume-Tech.pdf" },
   },
+];
+
+// Résumés for the other roles I am open to.
+export const moreResumes = [
+  { name: "Consulting résumé", file: "/Krishna-Gahlod-Resume-Consulting.pdf" },
+  { name: "Finance résumé", file: "/Krishna-Gahlod-Resume-Finance.pdf" },
 ];

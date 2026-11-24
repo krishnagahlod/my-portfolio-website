@@ -10,7 +10,7 @@ import Nav from "@/components/Nav";
 const host = Host_Grotesk({ variable: "--font-host", subsets: ["latin"] });
 
 const description =
-  "Krishna Gahlod builds AI products and ships them. Founder of Golash, CTO at Tarashio, Chemical Engineering at IIT Bombay. Open to AI product manager and forward deployed engineer roles.";
+  "Krishna Gahlod builds AI products and ships them. Founder of Golash, CTO at Tarashio, Chemical Engineering at IIT Bombay. Open to new roles, ideally AI product manager or forward deployed engineer.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://krishna-gahlod.golash.in"),

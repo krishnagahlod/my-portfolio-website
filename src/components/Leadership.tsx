@@ -2,7 +2,8 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, type CSSProperties } from "react";
-import { leadership } from "@/content";
+import { leadership, projects } from "@/content";
+import { PageLink } from "./Curtain";
 import Glyph from "./Glyph";
 import { InView, Marks } from "./Marks";
 import { Lines } from "./motion";
@@ -49,6 +50,11 @@ export default function Leadership() {
               <div className="sm:col-span-8 sm:self-end">
                 <h3 className="t-big font-medium">{role.title}</h3>
                 <p className="t-body mt-3 max-w-[54ch] opacity-80">{role.text}</p>
+                {role.link && (
+                  <PageLink href={role.link.href} colour={projects.find((p) => role.link?.href.endsWith(p.slug))?.deep} className="link t-small mt-3 inline-block font-medium">
+                    {role.link.label}
+                  </PageLink>
+                )}
               </div>
 
               <InView className="sm:col-span-4 sm:self-end">

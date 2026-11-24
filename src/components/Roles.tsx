@@ -1,7 +1,7 @@
-import { roles } from "@/content";
+import { moreResumes, roles } from "@/content";
 import { Lines } from "./motion";
 
-/** The two roles I am looking for. Each card carries its strongest evidence and the résumé written for it. */
+/** The two roles I would like most, each with its strongest evidence and the résumé written for it, then the résumés for other roles. */
 export default function Roles() {
   return (
     <section id="roles" className="wrap scroll-mt-24 pb-[clamp(5rem,11vw,10rem)]">
@@ -9,7 +9,7 @@ export default function Roles() {
         <h2 className="t-mega">
           <Lines lines={["Hiring for one", "of these?"]} />
         </h2>
-        <p className="t-lead max-w-[32ch] text-mute">The two roles I am looking for, with the evidence for each and the résumé written for it.</p>
+        <p className="t-lead max-w-[32ch] text-mute">The two roles I would like most, with the evidence for each. I am open to others as well.</p>
       </div>
 
       <div className="mt-[clamp(2.5rem,6vw,5rem)] grid gap-[clamp(1rem,2vw,2rem)] lg:grid-cols-2">
@@ -38,6 +38,15 @@ export default function Roles() {
           </article>
         ))}
       </div>
+
+      <p className="t-lead mt-[clamp(1.5rem,3vw,2.5rem)] flex flex-wrap items-baseline gap-x-8 gap-y-3">
+        <span className="text-mute">Hiring for something else? There is a résumé for that too.</span>
+        {moreResumes.map((r) => (
+          <a key={r.file} href={r.file} download className="link font-medium">
+            {r.name} (PDF)
+          </a>
+        ))}
+      </p>
     </section>
   );
 }
