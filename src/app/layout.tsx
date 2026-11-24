@@ -16,8 +16,15 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://krishna-gahlod.golash.in"),
   title: { default: "Krishna Gahlod, AI product builder", template: "%s | Krishna Gahlod" },
   description,
-  openGraph: { title: "Krishna Gahlod, AI product builder", description, type: "website", siteName: "Krishna Gahlod" },
-  // The preview picture itself comes from opengraph-image.jpg and twitter-image.jpg beside this file.
+  // Case study pages set their own preview, so a shared project link shows that project.
+  openGraph: {
+    title: "Krishna Gahlod, AI product builder",
+    description,
+    url: "/",
+    type: "website",
+    siteName: "Krishna Gahlod",
+    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "Krishna Gahlod builds AI products and ships them. A halftone portrait stands beside the headline." }],
+  },
   twitter: { card: "summary_large_image" },
 };
 

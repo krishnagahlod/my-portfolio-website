@@ -48,7 +48,7 @@ export default function Wheel() {
   return (
     <section id="work" aria-label="Selected work">
       {/* Wide screens: scroll turns a drum of titles */}
-      <motion.div ref={ref} className="wheel-desktop text-paper" style={{ backgroundColor: background, height: `${n * 90 + 30}vh` }}>
+      <motion.div ref={ref} className="wheel-desktop text-paper" style={{ backgroundColor: background, height: `${n * 66 + 30}vh` }}>
         <div className="wrap sticky top-0 grid h-screen grid-cols-12 items-center gap-x-8 overflow-hidden">
           <h2 className="t-small absolute left-[var(--pad)] top-24">Selected work</h2>
 

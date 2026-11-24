@@ -4,7 +4,7 @@ import { Lines } from "./motion";
 /** The two roles I would like most, each with its strongest evidence and the résumé written for it, then the résumés for other roles. */
 export default function Roles() {
   return (
-    <section id="roles" className="wrap scroll-mt-24 pb-[clamp(5rem,11vw,10rem)]">
+    <section id="roles" className="wrap py-[clamp(5rem,11vw,10rem)]">
       <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
         <h2 className="t-mega">
           <Lines lines={["Hiring for one", "of these?"]} />
@@ -29,10 +29,11 @@ export default function Roles() {
             </ul>
             <a
               href={role.resume.file}
-              download
+              target="_blank"
+              rel="noopener"
               className="mt-auto flex items-center justify-between gap-6 bg-paper px-[clamp(1rem,1.6vw,1.5rem)] py-[clamp(1rem,1.4vw,1.3rem)] font-medium text-ink transition-colors duration-300 hover:bg-white"
             >
-              <span className="t-lead">Download the {role.resume.name}</span>
+              <span className="t-lead">Read the {role.resume.name}</span>
               <span className="t-small">PDF</span>
             </a>
           </article>
@@ -42,7 +43,7 @@ export default function Roles() {
       <p className="t-lead mt-[clamp(1.5rem,3vw,2.5rem)] flex flex-wrap items-baseline gap-x-8 gap-y-3">
         <span className="text-mute">Hiring for something else? There is a résumé for that too.</span>
         {moreResumes.map((r) => (
-          <a key={r.file} href={r.file} download className="link font-medium">
+          <a key={r.file} href={r.file} target="_blank" rel="noopener" className="link font-medium">
             {r.name} (PDF)
           </a>
         ))}

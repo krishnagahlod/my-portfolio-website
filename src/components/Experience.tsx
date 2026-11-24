@@ -240,7 +240,7 @@ export default function Experience() {
                   </div>
                   <InView className="accent lg:col-span-7">{figures[job.company]}</InView>
                 </div>
-                <ul className="rule t-small grid gap-x-8 gap-y-2 pt-4 sm:grid-cols-2 lg:grid-cols-4">
+                <ul className="rule t-body grid gap-x-10 gap-y-2 pt-4 sm:grid-cols-2">
                   {job.points.map((point) => (
                     <li key={point}>{point}</li>
                   ))}

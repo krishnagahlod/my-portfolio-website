@@ -88,6 +88,17 @@ body {
   background-size: 0% 1px;
   background-position: 100% 100%;
 }
+/* A text link is one line tall, which is hard to hit with a thumb, so on touch screens its tap area reaches past the words */
+@media (pointer: coarse) {
+  .link {
+    position: relative;
+  }
+  .link::after {
+    content: "";
+    position: absolute;
+    inset: -0.7rem -0.4rem;
+  }
+}
 
 /* The rotating work drum only runs on wide screens with motion allowed */
 .wheel-desktop {

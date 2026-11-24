@@ -88,14 +88,23 @@ export default function Hero() {
       </motion.h1>
 
       {/* The short introduction: top left on wide screens, under the headline on phones */}
-      <motion.p
-        className="t-lead relative z-10 mt-6 max-w-[40ch] md:order-first md:mb-auto md:mt-0"
+      <motion.div
+        className="relative z-10 mt-6 md:order-first md:mb-auto md:mt-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: OUT, delay: delay + 0.45 }}
       >
-        {person.intro}
-      </motion.p>
+        <p className="t-lead max-w-[40ch]">{person.intro}</p>
+        {/* The two things a recruiter came for, before any scrolling */}
+        <p className="mt-6 flex flex-wrap gap-3 text-[0.95rem] font-medium">
+          <a href={person.resume} target="_blank" rel="noopener" className="bg-black px-5 py-3 text-paper transition-opacity duration-300 hover:opacity-75">
+            Résumé (PDF)
+          </a>
+          <a href={"mailto:" + person.email} className="px-5 py-3 shadow-[inset_0_0_0_1.5px_currentColor] transition-colors duration-300 hover:bg-black hover:text-paper">
+            Email me
+          </a>
+        </p>
+      </motion.div>
 
       <motion.div
         className="rule t-small relative z-10 mt-9 grid grid-cols-2 gap-x-6 gap-y-3 bg-paper pt-5 md:grid-cols-4"

@@ -19,7 +19,7 @@ export default function Leadership() {
   const bar = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="leadership" ref={ref} className="pin-section relative bg-black text-paper" style={{ height: "420vh" }}>
+    <section id="leadership" ref={ref} className="pin-section relative bg-black text-paper" style={{ height: "340vh" }}>
       <div className="pin-sticky sticky top-0 flex h-screen flex-col justify-center overflow-hidden max-lg:py-20">
         <motion.div className="pin-track flex w-max items-stretch gap-[2vw] px-[4vw]" style={{ x }}>
           <div className="flex w-[40vw] shrink-0 flex-col justify-center">

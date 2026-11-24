@@ -5,6 +5,8 @@ export const person = {
   email: "krishnagahlod@gmail.com",
   linkedin: "https://www.linkedin.com/in/krishna-gahlod-65143927b/",
   github: "https://github.com/krishnagahlod",
+  // The one-click résumé in the menu and the hero. The versions by role sit in the hiring section.
+  resume: "/Krishna-Gahlod-Resume.pdf",
   seeking: "Open to new roles, ideally AI product manager or forward deployed engineer",
   intro:
     "I work where product and engineering meet: I decide what to build, then build and ship it. So far: five live apps at Golash, a mindset training product with 200+ users, and conversational AI agents at Accenture.",
@@ -242,7 +244,7 @@ export const projects: Project[] = [
       { value: "200+", label: "users on the app, and growing" },
       { value: "46", label: "automated tests that check the build against the product spec" },
       { value: "16", label: "training tasks in the launch set" },
-      { value: "160+", label: "commits since September 2026" },
+      { value: "2", label: "languages from the start: English and Roman Hinglish" },
     ],
     problem:
       "Most mindset advice is read once and forgotten. Tarashio starts from the idea that mindset is trained through friction: small, deliberate tasks in ordinary life, such as pausing before opening an app, repeated until they stick. The product has to hand each person the right task at the right difficulty every day, without a human coach.",
@@ -390,7 +392,7 @@ export const projects: Project[] = [
       { value: "21", label: "residence halls, each with its own page" },
       { value: "26", label: "questions answered across 6 topics" },
       { value: "14", label: "campus portals and resources in one searchable place" },
-      { value: "111", label: "commits, all mine, from July to October 2026" },
+      { value: "6", label: "content files the next council edits instead of code" },
     ],
     problem:
       "The previous site described the council, but it did not help a student get something done: find the right person, a hostel's details, a document or an answer. I also wanted the next council to be able to keep the new one current without a developer.",
@@ -427,8 +429,6 @@ export const experience = [
     summary:
       "Developed an internal GenAI point of view: a framework for reliable, secure conversational AI agents on Google's CX Agent Studio.",
     points: [
-      "Built a 10-agent telecom assistant on a flat router, cutting handoff latency to 0.4 seconds",
-      "Raised the clean-pass rate from 31% to 63% across 16 evaluation scenarios",
       "Found and fixed 2 critical vulnerabilities through an 18-attempt security assessment",
       "Wrote a 37-page playbook of 8 declarations and 5 practices, presented to senior leadership",
     ],
@@ -442,9 +442,7 @@ export const experience = [
     summary:
       "Building the pipeline that produces classroom-ready teaching methods for Indian schools: tools that find, evaluate, map and illustrate each method before a teacher sees it.",
     points: [
-      "Built a 12-stage research pipeline that finds, verifies and screens teaching methods through 4 quality and safety gates",
-      "Developed an AI evaluator that reviews each method on a 7-question rubric and queues its decision for human approval",
-      "Engineered a mapper that matched 51 of 69 methods to textbook topics and declined the rest when evidence was weak",
+      "The AI evaluator queues every decision for human approval",
       "Benchmarked 5 image models on cost per accepted image for a pipeline that illustrates each method step by step",
     ],
   },
@@ -457,10 +455,8 @@ export const experience = [
     summary:
       "Leading technology at a mindset training startup. I built the app, the engine behind it and the launch site, and I run them in production.",
     points: [
-      "Built the product from its first commit across 160+ commits: training engine, app, admin console and launch site",
-      "Grew the app to 200+ users, with a guest trial that lets people start before they sign up",
-      "Designed a daily training engine with an energy ledger and a capacity that grows from 3 task slots to 6",
-      "Wrote 46 automated tests in 7 suites that verify every build against the product spec",
+      "Built the product from its first commit: training engine, app, admin console and launch site",
+      "Added a guest trial that lets people start before they sign up",
     ],
   },
   {
@@ -473,8 +469,6 @@ export const experience = [
       "Designed a Net Zero roadmap reviewed by CXOs, and received a Letter of Recommendation from the Chief Sustainability Officer of the $40B+ group.",
     points: [
       "Shaped a roadmap of 20+ initiatives across 5 sectors",
-      "Benchmarked 8 conglomerates across 10+ sustainability KPIs",
-      "Assessed 15+ low-carbon technologies and shortlisted 8 for adoption",
       "Reviewed ESG maturity across 12 group firms and identified 6 gaps",
     ],
   },
@@ -488,7 +482,6 @@ export const experience = [
     points: [
       "Built the mobile app in Flutter and the website in React for 5,000+ active learners",
       "Designed 12-screen flows and AI features that made navigation 20% more efficient",
-      "Defined the roadmap to grow coverage from 1 exam category to 3",
     ],
   },
 ];
@@ -504,7 +497,7 @@ export const leadership = [
     glyph: "servers" as const,
     link: { label: "See the Hostel Affairs site I built", href: "/work/hostel-affairs" },
     number: "13,000+",
-    numberLabel: "students connected to support portals through the Gymkhana platform I built",
+    numberLabel: "students served by the platform I built for the Gymkhana, IIT Bombay's student body",
     text: "The technical bridge between the Computer Centre and students. I run network operations for 10,000+ residents and manage hosting and deployment for 15+ student councils.",
     marks: { total: 21, on: 21, cols: 7, square: true, caption: "21 hostels on the network" },
   },
@@ -529,7 +522,7 @@ export const leadership = [
     glyph: "sun" as const,
     number: "300+",
     numberLabel: "attendees at International Day of Yoga, run with the Ministry of Ayush",
-    text: "Co-led the team responsible for physical and mental wellness on campus. We ran 15+ events and 10+ competitions and grew the club's outreach by 20%.",
+    text: "Co-led Yogastha, the Institute Sports Council's yoga club, which looks after physical and mental wellness on campus. We ran 15+ events and 10+ competitions and grew the club's outreach by 20%.",
     marks: { total: 20, on: 20, cols: 10, square: false, caption: "A 20-member team" },
   },
   {
@@ -541,7 +534,7 @@ export const leadership = [
     glyph: "orbit" as const,
     number: "3 of 45",
     numberLabel: "mentors given Special Recognition by the Dean, and I was one of them",
-    text: "Mentoring 12 freshmen and 6 sophomores through their academic and campus journey, and leading the events subgroup that supports 200+ Chemical Engineering students.",
+    text: "Mentoring 12 freshmen through the institute programme (ISMP) and 6 sophomores through the department one (DAMP), and leading the events subgroup that supports 200+ Chemical Engineering students.",
     marks: { total: 45, on: 3, cols: 9, square: false, caption: "45 mentors, 3 recognised" },
   },
 ];
@@ -555,14 +548,14 @@ export const groups = {
 };
 
 export const highlights = [
-  { n: "1 of 28", group: "Sport" as const, glyph: "chevrons" as const, text: "Athletes selected through institute-wide trials for the Inter-IIT camp team, in the 200 m sprint" },
-  { n: "1 of 200+", group: "Campus" as const, glyph: "star" as const, text: "Residents named Hostel Sophomore of the Year, for 5+ General Championships and my work as Design Secretary" },
+  { n: "1 of 28", group: "Sport" as const, glyph: "chevrons" as const, text: "Athletes selected through institute-wide trials for the Inter-IIT athletics camp team, which trains for the sports meet between the IITs, in the 200 m sprint" },
+  { n: "1 of 200+", group: "Campus" as const, glyph: "star" as const, text: "Residents named Hostel Sophomore of the Year, for 5+ inter-hostel General Championships and my work as Design Secretary" },
   { n: "1,000", group: "Community" as const, glyph: "leaf" as const, text: "Saplings planted across eco-drives, along with 200+ kg of beach waste removed" },
-  { n: "19%", group: "Markets" as const, glyph: "bars" as const, text: "XIRR on a personal investment portfolio that I research, allocate and rebalance myself" },
+  { n: "19%", group: "Markets" as const, glyph: "bars" as const, text: "Annualised return (XIRR) on a personal investment portfolio that I research, allocate and rebalance myself" },
   { n: "18", group: "Markets" as const, glyph: "book" as const, text: "Students guided through a Summer of Science project on stock market analysis, with weekly resources and quizzes" },
-  { n: "160+", group: "Community" as const, glyph: "atom" as const, text: "Girls from rural India engaged through the WiSE initiative to encourage careers in STEM" },
+  { n: "160+", group: "Community" as const, glyph: "atom" as const, text: "Girls from rural India engaged through WiSE, IIT Bombay's Women in Science and Engineering initiative, to encourage careers in STEM" },
   { n: "1,000+", group: "Campus" as const, glyph: "eye" as const, text: "Attendees at Vision, the Design Club's flagship event, where I led 2 projects" },
-  { n: "2 medals", group: "Sport" as const, glyph: "medal" as const, text: "Bronze in Weightlifting and Silver in Triathlon at the General Championships, plus two Top-10 finishes in Crossy" },
+  { n: "2 medals", group: "Sport" as const, glyph: "medal" as const, text: "Bronze in Weightlifting and Silver in Triathlon at the General Championships, plus two Top-10 finishes in Crossy, the cross-country race" },
 ];
 
 export const toolkit = [
@@ -585,7 +578,7 @@ export const roles = [
     fit: "I find the problem, decide what to build and measure whether it worked. I have done that as a founder and as a CTO.",
     proof: [
       { n: "5 apps", text: "Founded Golash and took five apps for Indian college students from idea to launch" },
-      { n: "1 to 3", text: "Defined the EdMe roadmap that grows coverage from one exam category to three" },
+      { n: "200+", text: "Grew Tarashio to 200+ users, with a guest trial that lets people start before they sign up" },
       { n: "31% to 63%", text: "Raised the clean-pass rate of a 10-agent assistant across 16 evaluation scenarios at Accenture" },
     ],
     resume: { name: "product résumé", file: "/Krishna-Gahlod-Resume.pdf" },
@@ -596,7 +589,7 @@ export const roles = [
     proof: [
       { n: "10 agents", text: "Built a telecom assistant on Google's CX Agent Studio at Accenture, with 0.4 second handoffs" },
       { n: "12 stages", text: "Built the research pipeline at Gnaan U that finds and screens teaching methods through 4 gates" },
-      { n: "13,000+", text: "Students connected to support portals through the platform I built as Institute System Administrator" },
+      { n: "13,000+", text: "Students served by the campus platform I built as Institute System Administrator" },
     ],
     resume: { name: "engineering résumé", file: "/Krishna-Gahlod-Resume-Tech.pdf" },
   },

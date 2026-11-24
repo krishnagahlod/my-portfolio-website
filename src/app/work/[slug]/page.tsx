@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -18,7 +19,23 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  return project ? { title: project.name, description: project.summary } : {};
+  if (!project) return {};
+  const path = "/work/" + project.slug;
+  // Each project has its own preview picture in public/og. One added later without a picture falls back to the home preview.
+  const picture = existsSync("public/og/" + project.slug + ".jpg") ? "/og/" + project.slug + ".jpg" : "/og/home.jpg";
+  return {
+    title: project.name,
+    description: project.summary,
+    alternates: { canonical: path },
+    openGraph: {
+      title: project.name + " | Krishna Gahlod",
+      description: project.summary,
+      url: path,
+      type: "article",
+      siteName: "Krishna Gahlod",
+      images: [{ url: picture, width: 1200, height: 630, alt: project.name + ": " + project.kind }],
+    },
+  };
 }
 
 function Row({ title, children }: { title: string; children: React.ReactNode }) {
@@ -176,7 +193,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           <section className="rule py-[clamp(2.5rem,5vw,4.5rem)]">
             <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
               <h2 className="t-big">Screens</h2>
-              {project.gallery.length > 1 && <p className="t-small text-mute">{project.gallery.length} screens. Drag or scroll sideways to see them all.</p>}
+              {project.gallery.length > 1 && <p className="t-small text-mute">{project.gallery.length} screens. Use the arrows, or drag sideways.</p>}
             </div>
             <div className="mt-[clamp(1.5rem,3vw,2.5rem)]">
               <Strip label={`${project.name} screens`}>

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
@@ -8,17 +9,31 @@ import Leadership from "@/components/Leadership";
 import Roles from "@/components/Roles";
 import Wheel from "@/components/Wheel";
 import { Lines } from "@/components/motion";
-import { education, groups, highlights, toolkit } from "@/content";
+import { education, groups, highlights, person, toolkit } from "@/content";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+// Tells search engines that this site is about one person, and which profiles are the same person.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: person.name,
+  url: "https://krishna-gahlod.golash.in",
+  affiliation: { "@type": "CollegeOrUniversity", name: "Indian Institute of Technology Bombay" },
+  sameAs: [person.linkedin, person.github],
+};
 
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Everything above the contact section slides over it, so it needs its own ground */}
       <div className="relative z-10 bg-paper">
         <Hero />
         <Golash />
         <Wheel />
         <Experience />
+        <Roles />
         <Leadership />
 
         <section className="py-[clamp(5rem,11vw,10rem)]">
@@ -34,11 +49,11 @@ export default function Home() {
             {highlights.map((h) => (
               <li
                 key={h.text}
-                className="tone tile flex min-h-[22rem] flex-col justify-between gap-10 p-[clamp(1.25rem,1.8vw,1.75rem)]"
+                className="tone tile flex flex-col justify-between gap-6 p-[clamp(1.25rem,1.8vw,1.75rem)] sm:min-h-[22rem] sm:gap-10"
                 style={{ "--deep": groups[h.group].deep, "--bright": groups[h.group].bright } as CSSProperties}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <Glyph name={h.glyph} className="w-20" />
+                  <Glyph name={h.glyph} className="w-14 sm:w-20" />
                   <p className="t-small font-medium">{h.group}</p>
                 </div>
                 <div>
@@ -69,8 +84,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <Roles />
       </div>
 
       {/* The contact section is pinned under the page, so links jump to this marker at the end of the content */}
