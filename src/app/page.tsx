@@ -1,69 +1,78 @@
-import Image from "next/image";
+import type { CSSProperties } from "react";
+import Contact from "@/components/Contact";
+import Experience from "@/components/Experience";
+import Glyph from "@/components/Glyph";
+import Golash from "@/components/Golash";
+import Hero from "@/components/Hero";
+import Leadership from "@/components/Leadership";
+import Wheel from "@/components/Wheel";
+import { Lines } from "@/components/motion";
+import { education, groups, highlights, toolkit } from "@/content";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      {/* Everything above the contact section slides over it, so it needs its own ground */}
+      <div className="relative z-10 bg-paper">
+        <Hero />
+        <Golash />
+        <Wheel />
+        <Experience />
+        <Leadership />
+
+        <section className="py-[clamp(5rem,11vw,10rem)]">
+          <div className="wrap flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+            <h2 className="t-mega">
+              <Lines lines={["Outside the build"]} />
+            </h2>
+            <p className="t-lead max-w-[30ch] text-mute">Sport, campus life, community work and markets. The colour tells you which.</p>
+          </div>
+
+          {/* A quilt of tiles: the group sets the colour, and each tile turns over under the pointer */}
+          <ul className="wrap mt-[clamp(2.5rem,6vw,5rem)] grid sm:grid-cols-2 lg:grid-cols-4">
+            {highlights.map((h) => (
+              <li
+                key={h.text}
+                className="tone tile flex min-h-[22rem] flex-col justify-between gap-10 p-[clamp(1.25rem,1.8vw,1.75rem)]"
+                style={{ "--deep": groups[h.group].deep, "--bright": groups[h.group].bright } as CSSProperties}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <Glyph name={h.glyph} className="w-20" />
+                  <p className="t-small font-medium">{h.group}</p>
+                </div>
+                <div>
+                  <p className="text-[clamp(2.25rem,3.6vw,3.75rem)] font-medium leading-none tracking-[-0.04em] tabular-nums">{h.n}</p>
+                  <p className="t-body mt-3">{h.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="wrap mt-[clamp(4rem,8vw,7rem)] grid gap-x-8 gap-y-12 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <h3 className="t-small text-mute">Education</h3>
+              <p className="t-big mt-4 font-medium">{education.school}</p>
+              <p className="t-body mt-2 text-mute">{education.degree}</p>
+              <p className="t-body text-mute">{education.minor}</p>
+            </div>
+            <div className="md:col-span-7 md:col-start-6">
+              <h3 className="t-small text-mute">Toolkit</h3>
+              <dl className="t-body mt-4">
+                {toolkit.map((t) => (
+                  <div key={t.group} className="rule grid grid-cols-4 gap-x-4 py-3">
+                    <dt className="col-span-1 font-medium">{t.group}</dt>
+                    <dd className="col-span-3 text-mute">{t.items}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* The contact section is pinned under the page, so links jump to this marker at the end of the content */}
+      <div id="contact" aria-hidden />
+      <Contact />
+    </>
   );
 }
