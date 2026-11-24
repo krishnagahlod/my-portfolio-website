@@ -103,6 +103,7 @@ export default function Portrait({ peekAfter }: { peekAfter: number }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={SRC}
+        fetchPriority="high"
         alt="Krishna Gahlod"
         className="absolute inset-0 h-full w-full object-cover mix-blend-multiply"
         style={{ maskImage: lens("#000", "transparent"), WebkitMaskImage: lens("#000", "transparent") }}

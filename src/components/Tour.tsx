@@ -14,7 +14,14 @@ export default function Tour({ src, poster, alt, sizes, play = true, priority }:
   const inView = useInView(holder, { amount: 0.3 });
   const reduce = useReducedMotion();
   const [started, setStarted] = useState(false);
-  const on = play && inView && !reduce;
+
+  // Phones and data-saver connections keep the still: each video is 1 to 2 MB.
+  const [allowed, setAllowed] = useState(false);
+  useEffect(() => {
+    const saver = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    setAllowed(window.matchMedia("(min-width: 768px)").matches && !saver);
+  }, []);
+  const on = play && inView && allowed && !reduce;
 
   useEffect(() => {
     const v = video.current;
@@ -26,7 +33,7 @@ export default function Tour({ src, poster, alt, sizes, play = true, priority }:
   return (
     <div ref={holder} className="absolute inset-0">
       <Image src={poster} alt={alt} fill sizes={sizes} priority={priority} className="object-cover object-top" />
-      {!reduce && (
+      {allowed && !reduce && (
         <video
           ref={video}
           src={src}

@@ -102,7 +102,7 @@ export type Project = {
   problem: string;
   built: string[];
   how: { title: string; text: string }[];
-  gallery?: { src: string; caption: string }[];
+  gallery?: { src: string; caption: string; phone?: boolean }[]; // `phone` marks an upright phone screen with its own frame
 };
 
 export const projects: Project[] = [
@@ -139,7 +139,6 @@ export const projects: Project[] = [
       { title: "One brand system", text: "Each app has its own colour inside a shared identity, so five products read as one family." },
     ],
     gallery: [
-      { src: "/img/golash-toolkit.webp", caption: "The free tools on golash.in" },
       { src: "/img/app-internprep.webp", caption: "InternPrep AI" },
       { src: "/img/app-opportunities.webp", caption: "Opportunity OS" },
       { src: "/img/app-finalist.webp", caption: "Finalist" },
@@ -259,7 +258,15 @@ export const projects: Project[] = [
       { title: "Watching production", text: "PostHog and Sentry cover product analytics and errors, and an admin dashboard tracks usage." },
       { title: "The launch site", text: "tarashio.com is built from scroll-linked pinned scenes, with animation limited to properties the browser can composite cheaply." },
     ],
-    gallery: [{ src: "/img/tarashio-app.webp", caption: "The first screen of the app" }],
+    gallery: [
+      { src: "/img/tarashio-1-welcome.webp", caption: "Welcome, with a way to try before signing up", phone: true },
+      { src: "/img/tarashio-2-discovery.webp", caption: "A short discovery of goals and routines", phone: true },
+      { src: "/img/tarashio-3-home.webp", caption: "Home: the next task, and the week so far", phone: true },
+      { src: "/img/tarashio-4-task.webp", caption: "A task: what to do, what to avoid, what it costs", phone: true },
+      { src: "/img/tarashio-5-tasks.webp", caption: "Tasks: in progress, history and a surprise slot", phone: true },
+      { src: "/img/tarashio-6-progress.webp", caption: "Progress: streak, energy capacity, achievements", phone: true },
+      { src: "/img/tarashio-7-streak.webp", caption: "A missed day puts the streak on hold, not back to zero", phone: true },
+    ],
   },
   {
     slug: "stock-scout",

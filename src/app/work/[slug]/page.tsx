@@ -171,26 +171,39 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           </Row>
         )}
 
+        {/* Screens run the full width of the page: phones stand upright, wide screens keep their own shape */}
         {project.gallery && (
-          <Row title="Screens">
-            <Strip label={`${project.name} screens`}>
-              {project.gallery.map((g, i, all) => (
-                <figure key={g.src} className={`shrink-0 ${all.length > 1 ? "w-[86%]" : "w-full"}`}>
-                  <div className="relative aspect-[16/10] overflow-hidden bg-white">
-                    <Image src={g.src} alt={g.caption} fill sizes="(max-width: 768px) 100vw, 56vw" draggable={false} className="object-cover object-top" />
-                  </div>
-                  <figcaption className="t-small mt-3 flex justify-between gap-4 text-mute">
-                    <span>{g.caption}</span>
-                    {all.length > 1 && (
-                      <span className="tabular-nums">
-                        {i + 1} of {all.length}
-                      </span>
+          <section className="rule py-[clamp(2.5rem,5vw,4.5rem)]">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+              <h2 className="t-big">Screens</h2>
+              {project.gallery.length > 1 && <p className="t-small text-mute">{project.gallery.length} screens. Drag or scroll sideways to see them all.</p>}
+            </div>
+            <div className="mt-[clamp(1.5rem,3vw,2.5rem)]">
+              <Strip label={`${project.name} screens`}>
+                {project.gallery.map((g, i, all) => (
+                  <figure key={g.src} className={`shrink-0 ${g.phone ? "w-[clamp(12.5rem,19vw,17rem)]" : all.length > 1 ? "w-[min(86%,62rem)]" : "w-full max-w-[62rem]"}`}>
+                    {g.phone ? (
+                      <div className="relative aspect-[600/1309] drop-shadow-[0_14px_22px_rgba(0,0,0,0.18)]">
+                        <Image src={g.src} alt={g.caption} fill sizes="(max-width: 768px) 60vw, 19vw" draggable={false} className="object-contain" />
+                      </div>
+                    ) : (
+                      <div className="relative aspect-[16/10] overflow-hidden bg-black/5">
+                        <Image src={g.src} alt={g.caption} fill sizes="(max-width: 768px) 100vw, 62rem" draggable={false} className="object-cover object-top" />
+                      </div>
                     )}
-                  </figcaption>
-                </figure>
-              ))}
-            </Strip>
-          </Row>
+                    <figcaption className="t-small mt-4 flex justify-between gap-4 text-mute">
+                      <span>{g.caption}</span>
+                      {all.length > 1 && (
+                        <span className="shrink-0 tabular-nums">
+                          {i + 1} of {all.length}
+                        </span>
+                      )}
+                    </figcaption>
+                  </figure>
+                ))}
+              </Strip>
+            </div>
+          </section>
         )}
       </div>
 
