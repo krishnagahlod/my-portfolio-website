@@ -20,6 +20,7 @@ export type GolashApp = {
   what: string;
   url: string;
   tour?: string; // a looping scroll-through video of the live site
+  film?: string; // a short film about the app, played in place of the tour
   shot: string;
   caseStudy?: string;
   stats?: { value: string; label: string }[];
@@ -34,6 +35,7 @@ export const golashApps: GolashApp[] = [
     url: "https://internprep-ai.golash.in",
     shot: "/img/app-internprep.webp",
     tour: "/tour/internprep.mp4",
+    film: "/film/internprep.mp4",
     caseStudy: "internprep-ai",
     stats: [
       { value: "100+", label: "active users" },
@@ -48,6 +50,7 @@ export const golashApps: GolashApp[] = [
     url: "https://opportunity-os.golash.in",
     shot: "/img/app-opportunities.webp",
     tour: "/tour/opportunities.mp4",
+    film: "/film/opportunity-os.mp4",
     caseStudy: "opportunity-os",
     stats: [
       { value: "50+", label: "career networks" },
@@ -101,6 +104,7 @@ export type Project = {
   cover?: string;
   stage?: { label: string; text: string }; // where the product stands today, when that is not a full launch
   tour?: string; // a looping scroll-through video of the live site, played over the cover
+  film?: string; // a short film about the project (16:9, with music). Plays in place of the tour, and with a sound button on the case study page
   example?: { prompt: string; rules: string[] }; // typographic cover when there is no screenshot
   numbers: { value: string; label: string }[];
   problem: string;
@@ -128,6 +132,7 @@ export const projects: Project[] = [
     stack: ["Next.js 16", "React 19", "TypeScript", "Cloudflare Workers", "Supabase", "Neon Postgres", "Vercel"],
     cover: "/img/golash-home.webp",
     tour: "/tour/golash.mp4",
+    film: "/film/golash.mp4",
     numbers: [
       { value: "5", label: "apps live on their own subdomains" },
       { value: "7", label: "free tools that run in the browser" },
@@ -168,6 +173,7 @@ export const projects: Project[] = [
     stack: ["Next.js 16", "FastAPI", "Supabase", "pgvector", "Gemini", "Groq", "Render", "Vercel", "PostHog", "Sentry"],
     cover: "/img/app-internprep.webp",
     tour: "/tour/internprep.mp4",
+    film: "/film/internprep.mp4",
     numbers: [
       { value: "100+", label: "active users" },
       { value: "270+", label: "cases with answer keys" },
@@ -207,6 +213,7 @@ export const projects: Project[] = [
     stack: ["Next.js 16", "Supabase", "n8n", "Docker", "Gemini", "Llama 3.3", "Zod", "Resend", "Telegram API", "GitHub Actions"],
     cover: "/img/app-opportunities.webp",
     tour: "/tour/opportunities.mp4",
+    film: "/film/opportunity-os.mp4",
     numbers: [
       { value: "50+", label: "career networks aggregated" },
       { value: "10,000+", label: "opportunities processed" },
@@ -247,6 +254,7 @@ export const projects: Project[] = [
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Supabase", "PostHog", "Sentry", "Resend", "Vercel"],
     cover: "/img/tarashio-home.webp",
     tour: "/tour/tarashio.mp4",
+    film: "/film/tarashio.mp4",
     numbers: [
       { value: "200+", label: "users on the app, and growing" },
       { value: "46", label: "automated tests that check the build against the product spec" },
@@ -290,6 +298,7 @@ export const projects: Project[] = [
     live: [{ label: "stockscout-five.vercel.app", url: "https://stockscout-five.vercel.app" }],
     stack: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Postgres", "Python", "pandas", "GitHub Actions", "Vercel"],
     cover: "/img/stockscout-home.webp",
+    film: "/film/stock-scout.mp4",
     numbers: [
       { value: "500+", label: "Nifty 500 companies refreshed every weeknight" },
       { value: "770,000+", label: "daily prices since 2015" },
@@ -322,6 +331,7 @@ export const projects: Project[] = [
     live: [{ label: "plank-pro.vercel.app", url: "https://plank-pro.vercel.app/", embed: true, allow: "camera" }],
     stack: ["Next.js", "TensorFlow.js", "MoveNet Lightning", "Supabase", "Vercel Edge"],
     cover: "/img/plank-home.webp",
+    film: "/film/plank-pro.mp4",
     numbers: [
       { value: "30+", label: "frames per second in the browser" },
       { value: "90%", label: "less landmark jitter after filtering" },
@@ -361,6 +371,7 @@ export const projects: Project[] = [
     stack: ["React", "Flask", "RAG", "MiniLM embeddings", "Llama 3.3", "Gemini", "Streamlit", "Supabase"],
     cover: "/img/suscell-live.webp",
     tour: "/tour/suscell.mp4",
+    film: "/film/sustainability-cell.mp4",
     numbers: [
       { value: "800+", label: "students reached" },
       { value: "100+", label: "parameters in the calculator" },
@@ -395,6 +406,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "cmdk", "JSON content files"],
     cover: "/img/hostelaffairs-home.webp",
     tour: "/tour/hostelaffairs.mp4",
+    film: "/film/hostel-affairs.mp4",
     numbers: [
       { value: "21", label: "residence halls, each with its own page" },
       { value: "26", label: "questions answered across 6 topics" },

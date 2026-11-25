@@ -15,7 +15,8 @@ const deepOf = (slug: string) => projects.find((p) => p.slug === slug)?.deep;
 function Shot({ app }: { app: GolashApp }) {
   const alt = `${app.name} home page`;
   const sizes = "(max-width: 768px) 100vw, 56vw";
-  return app.tour ? <Tour src={app.tour} poster={app.shot} alt={alt} sizes={sizes} /> : <Image src={app.shot} alt={alt} fill sizes={sizes} className="object-cover object-top" />;
+  const video = app.film ?? app.tour;
+  return video ? <Tour src={video} poster={app.shot} alt={alt} sizes={sizes} film={app.film ? { ground: app.color, name: app.name } : undefined} /> : <Image src={app.shot} alt={alt} fill sizes={sizes} className="object-cover object-top" />;
 }
 
 function Details({ app }: { app: GolashApp }) {

@@ -3,11 +3,12 @@ import type { Project } from "@/content";
 import Tour from "./Tour";
 
 /** A project's screenshot (a scroll-through video where one exists), or a typographic stand-in when it has none. */
-export default function Cover({ project, sizes, priority, play = true }: { project: Project; sizes: string; priority?: boolean; play?: boolean }) {
+export default function Cover({ project, sizes, priority, play = true, sound }: { project: Project; sizes: string; priority?: boolean; play?: boolean; sound?: boolean }) {
   if (project.cover) {
     const alt = `${project.name} screenshot`;
-    return project.tour ? (
-      <Tour src={project.tour} poster={project.cover} alt={alt} sizes={sizes} priority={priority} play={play} />
+    const video = project.film ?? project.tour;
+    return video ? (
+      <Tour src={video} poster={project.cover} alt={alt} sizes={sizes} priority={priority} play={play} film={project.film ? { ground: project.deep, name: project.name, sound } : undefined} />
     ) : (
       <Image src={project.cover} alt={alt} fill sizes={sizes} priority={priority} className="object-cover object-top" />
     );

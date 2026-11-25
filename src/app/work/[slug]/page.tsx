@@ -105,7 +105,18 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
       </header>
 
       <div className="wrap pb-[clamp(3rem,6vw,5rem)]" style={{ background: project.deep }}>
-        {project.cover ? (
+        {project.film ? (
+          // A film is shown whole (the parallax would crop its edges) and keeps its own sound button, so the live link sits beside it.
+          <div className="relative aspect-[16/9] w-full overflow-hidden">
+            <Cover project={project} sizes="100vw" priority sound />
+            {offer && (
+              <LiveTrigger offer={offer} className="t-small absolute bottom-4 left-4 flex items-center gap-3 bg-paper px-4 py-3 font-medium text-ink">
+                <span aria-hidden className="live-dot" />
+                Explore it live
+              </LiveTrigger>
+            )}
+          </div>
+        ) : project.cover ? (
           <LiveTrigger offer={offer} className="group relative block w-full text-left">
             <Parallax className="relative aspect-[16/9] w-full">
               <div className="relative h-full w-full">
